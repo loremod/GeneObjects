@@ -28,11 +28,11 @@ setClass(
 GeneStructure <- function(seqnames, start, end, strand, exon_id) {
   # Perform consistency checks
   if (length(unique(seqnames)) > 1) {
-    stop("Error: All exons must be on the same chromosome.")
+    stop("All exons must be on the same chromosome.")
   }
 
   if (length(unique(strand)) > 1) {
-    stop("Error: All exons must be on the same strand.")
+    stop("All exons must be on the same strand.")
   }
 
   # Create the GRanges object

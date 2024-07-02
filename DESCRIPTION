@@ -1,9 +1,8 @@
 Package: GeneObjects
-Title: Specific Gene representation package
+Title: Specific Gene Representation Package
 Version: 1.0.0
 Authors@R: 
-    person("Lorenzo", "Modica", , "lorenzomod@hotmail.it", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person("Lorenzo", "Modica", , "lorenzomod@hotmail.it", role = c("aut", "cre"))
 Description: The GeneObjects package provides a comprehensive set of S4 classes to represent various types of genes, including protein-coding genes, long non-coding RNA genes, microRNA genes, ribosomal RNA genes, small nuclear RNA genes, and piwi-interacting RNA genes. This package enables researchers to create, manipulate, and analyze gene objects with detailed information about their structure and function. GeneObjects is designed to facilitate bioinformatics workflows by offering easy-to-use constructor and accessor function.
 License: GPL-3
 Encoding: UTF-8
@@ -22,3 +21,5 @@ Suggests:
     DiagrammeR
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+URL: https://github.com/loremod/GeneObjects
+BugReports: https://github.com/loremod/GeneObjects/issues
