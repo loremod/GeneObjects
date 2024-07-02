@@ -3,8 +3,7 @@
 #' @importFrom GenomicRanges GRanges
 #' @importFrom IRanges IRanges
 #' @importFrom S4Vectors Rle
-library(GenomicRanges)
-library(methods)
+NULL
 
 
 setClass(

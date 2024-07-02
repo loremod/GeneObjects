@@ -4,12 +4,12 @@ Version: 1.0.0
 Authors@R: 
     person("Lorenzo", "Modica", , "lorenzomod@hotmail.it", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: It provides a set of S4 classes to represent various types of genes, including protein-coding genes, long non-coding RNA genes, microRNA genes, ribosomal RNA genes, small nuclear RNA genes, and piwi-interacting RNA genes.
-License: file LICENSE
+Description: The GeneObjects package provides a comprehensive set of S4 classes to represent various types of genes, including protein-coding genes, long non-coding RNA genes, microRNA genes, ribosomal RNA genes, small nuclear RNA genes, and piwi-interacting RNA genes. This package enables researchers to create, manipulate, and analyze gene objects with detailed information about their structure and function. GeneObjects is designed to facilitate bioinformatics workflows by offering easy-to-use constructor and accessor function.
+License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-biocViews: Genetics, GeneRepresentation, mRNA, lncRNA, miRNA, rRNA
+biocViews: Genetics, Transcriptomics, RNASeq, FunctionalGenomics, GeneRegulation
 Imports: 
     methods,
     GenomicRanges,

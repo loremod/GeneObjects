@@ -1,6 +1,6 @@
 # Load necessary packages
 #' @importFrom methods setGeneric setMethod
-library(methods)
+NULL
 
 # Define accessor functions for Gene class
 
