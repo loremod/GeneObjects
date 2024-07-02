@@ -5,6 +5,9 @@
 \alias{PiwiInteractingRNA-class}
 \alias{PiwiInteractingRNA}
 \title{Class PiwiInteractingRNA}
+\value{
+A PiwiInteractingRNA instance
+}
 \description{
 A class to represent piwi-interacting RNA genes.
 }

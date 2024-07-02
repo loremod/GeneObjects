@@ -18,12 +18,12 @@ setClass(
 #' @param end A numeric vector of end positions.
 #' @param strand A character vector of strand information.
 #' @param exon_id A vector of exon IDs.
-#' @return A GeneStructure object.
 #' @examples
 #' gene_structure <- GeneStructure(seqnames = "chr1", start = c(100, 230),
 #'                                 end = c(200,240), strand = "+",
 #'                                 exon_id = 1:2)
 #' gene_structure
+#' @return A GeneStructure object.
 #' @export
 GeneStructure <- function(seqnames, start, end, strand, exon_id) {
   # Perform consistency checks
@@ -57,6 +57,7 @@ GeneStructure <- function(seqnames, start, end, strand, exon_id) {
 #' @slot name A character string representing the gene name.
 #' @slot description A character string describing the gene.
 #' @slot struct A GeneStructure object representing the gene structure.
+#' @return It is not possible to instantiate a Gene Object since Gene is a virtual class
 #' @seealso \code{\linkS4class{CodingGene}}, \code{\linkS4class{LncRNAGene}}, \code{\linkS4class{MicroRNAGene}}
 #' @export
 setClass("Gene",
@@ -77,7 +78,6 @@ setClass("Gene",
 #' @description A class to represent protein-coding genes.
 #' @slot proteinID A character string representing the protein ID.
 #' @slot proteinSequence A character string representing the protein sequence.
-#' @seealso \code{\linkS4class{Gene}}
 #' @examples
 #' gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
 #'                             end = c(200,300),
@@ -89,6 +89,8 @@ setClass("Gene",
 #'                     struct = gen_struct, proteinID = "P12345",
 #'                     proteinSequence = "MTEYKLVVVG")
 #' coding_gene
+#' @return A CodingGene instance
+#' @seealso \code{\linkS4class{Gene}}
 #' @export
 CodingGene <- setClass("CodingGene",
                        contains = "Gene",
@@ -103,7 +105,6 @@ CodingGene <- setClass("CodingGene",
 #' @description A class to represent long non-coding RNA genes.
 #' @slot lncRNAID A character string representing the lncRNA ID.
 #' @slot RNASequence A character string representing the RNA sequence.
-#' @seealso \code{\linkS4class{Gene}}
 #' @examples
 #' gen_struct <- GeneStructure(seqnames = "chr2", start = c(300,472),
 #'                            end = c(400,900), strand = "-",
@@ -114,6 +115,8 @@ CodingGene <- setClass("CodingGene",
 #'                   struct = gen_struct, lncRNAID = "LNC123",
 #'                    RNASequence = "AUGCUACG")
 #' lncrna_gene
+#' @return A LncRNAGene instance
+#' @seealso \code{\linkS4class{Gene}}
 #' @export
 LncRNAGene <- setClass("LncRNAGene",
                        contains = "Gene",
@@ -128,7 +131,6 @@ LncRNAGene <- setClass("LncRNAGene",
 #' @description A class to represent microRNA genes.
 #' @slot microRNAID A character string representing the microRNA ID.
 #' @slot microRNASeedSequence A character string representing the microRNA seed sequence.
-#' @seealso \code{\linkS4class{Gene}}
 #' @examples
 #' gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
 #'                            end = c(200,300), strand = "+", exon_id = 1:2)
@@ -137,6 +139,8 @@ LncRNAGene <- setClass("LncRNAGene",
 #'                    struct = gen_struct, microRNAID = "MIR123",
 #'                    microRNASeedSequence = "ACGUGA")
 #' microrna_gene
+#' @return A MicroRNAGene instance
+#' @seealso \code{\linkS4class{Gene}}
 #' @export
 MicroRNAGene <- setClass("MicroRNAGene",
                          contains = "Gene",
@@ -152,7 +156,7 @@ MicroRNAGene <- setClass("MicroRNAGene",
 #' @description A class to represent ribosomal RNA genes.
 #' @slot rRNAID A character string representing the rRNA ID.
 #' @slot rRNASequence A character string representing the rRNA sequence.
-#' @seealso \code{\linkS4class{Gene}}
+#' @return A RibosomalRNA instance
 #' @examples
 #' gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
 #'                           end = c(200,300), strand = "+", exon_id = 1:2)
@@ -162,6 +166,7 @@ MicroRNAGene <- setClass("MicroRNAGene",
 #'                           struct = gen_struct, rRNAID = "RIB123",
 #'                           rRNASequence = "AGGCUAG")
 #' rrna_gene
+#' @seealso \code{\linkS4class{Gene}}
 #' @export
 RibosomalRNA <- setClass("RibosomalRNA",
                          contains = "Gene",
@@ -176,7 +181,7 @@ RibosomalRNA <- setClass("RibosomalRNA",
 #' @description A class to represent small nuclear RNA genes.
 #' @slot snRNAID A character string representing the snRNA ID.
 #' @slot snRNASequence A character string representing the snRNA sequence.
-#' @seealso \code{\linkS4class{Gene}}
+#' @return A SmallNuclearRNA instance
 #' @examples
 #' gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
 #'               end = c(200,300), strand = "+", exon_id = 1:2)
@@ -186,6 +191,7 @@ RibosomalRNA <- setClass("RibosomalRNA",
 #'               struct = gen_struct, snRNAID = "SNR123",
 #'               snRNASequence = "GCUAGCU")
 #' snrna_gene
+#' @seealso \code{\linkS4class{Gene}}
 #' @export
 SmallNuclearRNA <- setClass("SmallNuclearRNA",
                             contains = "Gene",
@@ -200,7 +206,6 @@ SmallNuclearRNA <- setClass("SmallNuclearRNA",
 #' @description A class to represent piwi-interacting RNA genes.
 #' @slot piRNAID A character string representing the piRNA ID.
 #' @slot piRNASequence A character string representing the piRNA sequence.
-#' @seealso \code{\linkS4class{Gene}}
 #' @examples
 #' gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
 #'                             end = c(200,300), strand = "+",
@@ -211,6 +216,8 @@ SmallNuclearRNA <- setClass("SmallNuclearRNA",
 #'                   struct = gen_struct, piRNAID = "PIWI123",
 #'                   piRNASequence = "UCGUAU")
 #' pirna_gene
+#' @return A PiwiInteractingRNA instance
+#' @seealso \code{\linkS4class{Gene}}
 #' @export
 PiwiInteractingRNA <- setClass("PiwiInteractingRNA",
                                contains = "Gene",

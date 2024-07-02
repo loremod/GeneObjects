@@ -5,6 +5,9 @@
 \alias{LncRNAGene-class}
 \alias{LncRNAGene}
 \title{Class LncRNAGene}
+\value{
+A LncRNAGene instance
+}
 \description{
 A class to represent long non-coding RNA genes.
 }

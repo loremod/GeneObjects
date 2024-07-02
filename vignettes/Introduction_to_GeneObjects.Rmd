@@ -208,5 +208,12 @@ lengthProduct(coding_gene)
 This vignette has introduced the basic functionalities of the `GeneObjects` package, demonstrating how to create different types of gene objects and access their information. For more details, please refer to the package documentation.
 
 
+# Session info
+```{r}
+sessionInfo()
+```
+
+
+
 Made by Lorenzo Modica, *Scientific Programming Project*
 

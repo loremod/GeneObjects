@@ -5,6 +5,9 @@
 \alias{SmallNuclearRNA-class}
 \alias{SmallNuclearRNA}
 \title{Class SmallNuclearRNA}
+\value{
+A SmallNuclearRNA instance
+}
 \description{
 A class to represent small nuclear RNA genes.
 }

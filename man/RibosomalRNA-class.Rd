@@ -5,6 +5,9 @@
 \alias{RibosomalRNA-class}
 \alias{RibosomalRNA}
 \title{Class RibosomalRNA}
+\value{
+A RibosomalRNA instance
+}
 \description{
 A class to represent ribosomal RNA genes.
 }

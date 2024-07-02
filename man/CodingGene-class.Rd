@@ -5,6 +5,9 @@
 \alias{CodingGene-class}
 \alias{CodingGene}
 \title{Class CodingGene}
+\value{
+A CodingGene instance
+}
 \description{
 A class to represent protein-coding genes.
 }

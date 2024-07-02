@@ -5,6 +5,9 @@
 \alias{MicroRNAGene-class}
 \alias{MicroRNAGene}
 \title{Class MicroRNAGene}
+\value{
+A MicroRNAGene instance
+}
 \description{
 A class to represent microRNA genes.
 }

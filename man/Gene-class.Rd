@@ -5,6 +5,9 @@
 \alias{Gene-class}
 \alias{Gene}
 \title{Virtual Class Gene}
+\value{
+It is not possible to instantiate a Gene Object since Gene is a virtual class
+}
 \description{
 A virtual class to represent a general gene structure.
 }
