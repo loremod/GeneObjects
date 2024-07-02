@@ -16,6 +16,16 @@ A class to represent ribosomal RNA genes.
 \item{\code{rRNASequence}}{A character string representing the rRNA sequence.}
 }}
 
+\examples{
+gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
+                          end = c(200,300), strand = "+", exon_id = 1:2)
+rrna_gene <- new("RibosomalRNA", id = "gene4", symbol = "RIB1",
+                          name = "Ribosomal RNA 1",
+                          description = "A ribosomal RNA gene",
+                          struct = gen_struct, rRNAID = "RIB123",
+                          rRNASequence = "AGGCUAG")
+rrna_gene
+}
 \seealso{
 \code{\linkS4class{Gene}}
 }

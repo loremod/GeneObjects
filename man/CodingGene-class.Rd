@@ -16,6 +16,18 @@ A class to represent protein-coding genes.
 \item{\code{proteinSequence}}{A character string representing the protein sequence.}
 }}
 
+\examples{
+gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
+                            end = c(200,300),
+                             strand = "+", exon_id = 1:2)
+
+coding_gene <- new("CodingGene", id = "gene1", symbol = "GENE1",
+                    name = "Gene 1",
+                    description = "A protein-coding gene",
+                    struct = gen_struct, proteinID = "P12345",
+                    proteinSequence = "MTEYKLVVVG")
+coding_gene
+}
 \seealso{
 \code{\linkS4class{Gene}}
 }

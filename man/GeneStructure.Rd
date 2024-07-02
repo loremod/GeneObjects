@@ -23,3 +23,9 @@ A GeneStructure object.
 \description{
 Create a GeneStructure Object
 }
+\examples{
+gene_structure <- GeneStructure(seqnames = "chr1", start = c(100, 230),
+                                end = c(200,240), strand = "+",
+                                exon_id = 1:2)
+gene_structure
+}

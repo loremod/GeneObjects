@@ -16,6 +16,17 @@ A class to represent long non-coding RNA genes.
 \item{\code{RNASequence}}{A character string representing the RNA sequence.}
 }}
 
+\examples{
+gen_struct <- GeneStructure(seqnames = "chr2", start = c(300,472),
+                           end = c(400,900), strand = "-",
+                           exon_id = 3:4)
+lncrna_gene <- new("LncRNAGene", id = "gene2", symbol = "LNC1",
+                  name = "LncRNA 1",
+                  description = "A long non-coding RNA gene",
+                  struct = gen_struct, lncRNAID = "LNC123",
+                   RNASequence = "AUGCUACG")
+lncrna_gene
+}
 \seealso{
 \code{\linkS4class{Gene}}
 }

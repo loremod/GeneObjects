@@ -16,6 +16,16 @@ A class to represent small nuclear RNA genes.
 \item{\code{snRNASequence}}{A character string representing the snRNA sequence.}
 }}
 
+\examples{
+gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
+              end = c(200,300), strand = "+", exon_id = 1:2)
+snrna_gene <- new("SmallNuclearRNA", id = "gene5", symbol = "SNR1",
+              name = "Small Nuclear RNA 1",
+              description = "A small nuclear RNA gene",
+              struct = gen_struct, snRNAID = "SNR123",
+              snRNASequence = "GCUAGCU")
+snrna_gene
+}
 \seealso{
 \code{\linkS4class{Gene}}
 }

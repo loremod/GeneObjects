@@ -14,7 +14,18 @@ name(x)
 }
 \value{
 The name of the gene.
+
+A character string representing the gene name.
 }
 \description{
 Get the name of a Gene
+}
+\examples{
+#I create a GeneStructure Object
+gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500, strand = "+", exon_id = 1)
+
+#I consider the class MicroRNAGene, which inherited this method from its superclass Gene
+gene <- new("MicroRNAGene", id = "gene1", symbol = "GENE1", name = "Gene 1",
+           description = "A test gene", struct = gen_struct)
+name(gene)
 }

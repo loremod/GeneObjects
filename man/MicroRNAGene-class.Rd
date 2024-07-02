@@ -16,6 +16,15 @@ A class to represent microRNA genes.
 \item{\code{microRNASeedSequence}}{A character string representing the microRNA seed sequence.}
 }}
 
+\examples{
+gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
+                           end = c(200,300), strand = "+", exon_id = 1:2)
+microrna_gene <- new("MicroRNAGene", id = "gene3", symbol = "MIR1",
+                   name = "MicroRNA 1", description = "A microRNA gene",
+                   struct = gen_struct, microRNAID = "MIR123",
+                   microRNASeedSequence = "ACGUGA")
+microrna_gene
+}
 \seealso{
 \code{\linkS4class{Gene}}
 }

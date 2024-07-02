@@ -14,7 +14,19 @@ symbol(x)
 }
 \value{
 The symbol of the gene.
+
+A character string representing the gene symbol.
 }
 \description{
 Get the symbol of a Gene
+}
+\examples{
+#I create a GeneStructure Object
+gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+                            strand = "+", exon_id = 1)
+
+#I consider the class CodingGene, which inherited this method from its superclass Gene
+gene <- new("CodingGene", id = "gene1", symbol = "GENE1", name = "Gene 1",
+            description = "A test gene", struct = gen_struct)
+symbol(gene)
 }

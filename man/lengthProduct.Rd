@@ -14,7 +14,19 @@ lengthProduct(x)
 }
 \value{
 The length of the product sequence.
+
+An integer representing the length of the product sequence.
 }
 \description{
 Get the length of the product sequence of a Gene
+}
+\examples{
+#I create a GeneStructure Object
+gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+                            strand = "+", exon_id = 1)
+coding_gene <- new("CodingGene", id = "gene1", symbol = "GENE1",
+                     name = "Gene 1", description = "A protein-coding gene",
+                     struct = gen_struct, proteinID = "P12345",
+                     proteinSequence = "MTEYKLVVVG")
+lengthProduct(coding_gene)
 }

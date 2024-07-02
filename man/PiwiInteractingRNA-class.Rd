@@ -16,6 +16,17 @@ A class to represent piwi-interacting RNA genes.
 \item{\code{piRNASequence}}{A character string representing the piRNA sequence.}
 }}
 
+\examples{
+gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
+                            end = c(200,300), strand = "+",
+                            exon_id = 1:2)
+pirna_gene <- new("PiwiInteractingRNA", id = "gene6", symbol = "PIWI1",
+                  name = "Piwi-Interacting RNA 1",
+                  description = "A piwi-interacting RNA gene",
+                  struct = gen_struct, piRNAID = "PIWI123",
+                  piRNASequence = "UCGUAU")
+pirna_gene
+}
 \seealso{
 \code{\linkS4class{Gene}}
 }

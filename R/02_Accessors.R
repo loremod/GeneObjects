@@ -11,6 +11,16 @@ NULL
 #' @name id
 #' @aliases id
 #' @export
+#' @return A character string representing the gene ID.
+#' @examples
+#' #I create a GeneStructure Object
+#' gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+#'                             strand = "+", exon_id = 1)
+#'
+#' #I consider the class LncRNAGene, which inherited this method from its superclass Gene
+#' gene <- new("LncRNAGene", id = "gene1", symbol = "GENE1", name = "Gene 1",
+#'             description = "A test gene", struct = gen_struct)
+#' id(gene)
 setGeneric("id", function(x) standardGeneric("id"))
 #' @rdname id
 setMethod("id", "Gene", function(x) x@id)
@@ -22,6 +32,16 @@ setMethod("id", "Gene", function(x) x@id)
 #' @name symbol
 #' @aliases symbol
 #' @export
+#' @return A character string representing the gene symbol.
+#' @examples
+#' #I create a GeneStructure Object
+#' gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+#'                             strand = "+", exon_id = 1)
+#'
+#' #I consider the class CodingGene, which inherited this method from its superclass Gene
+#' gene <- new("CodingGene", id = "gene1", symbol = "GENE1", name = "Gene 1",
+#'             description = "A test gene", struct = gen_struct)
+#' symbol(gene)
 setGeneric("symbol", function(x) standardGeneric("symbol"))
 #' @rdname symbol
 setMethod("symbol", "Gene", function(x) x@symbol)
@@ -33,6 +53,15 @@ setMethod("symbol", "Gene", function(x) x@symbol)
 #' @name name
 #' @aliases name
 #' @export
+#' @return A character string representing the gene name.
+#' @examples
+#' #I create a GeneStructure Object
+#' gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500, strand = "+", exon_id = 1)
+#'
+#' #I consider the class MicroRNAGene, which inherited this method from its superclass Gene
+#' gene <- new("MicroRNAGene", id = "gene1", symbol = "GENE1", name = "Gene 1",
+#'            description = "A test gene", struct = gen_struct)
+#' name(gene)
 setGeneric("name", function(x) standardGeneric("name"))
 #' @rdname name
 setMethod("name", "Gene", function(x) x@name)
@@ -44,6 +73,16 @@ setMethod("name", "Gene", function(x) x@name)
 #' @name description
 #' @aliases description
 #' @export
+#' @return A character string describing the gene.
+#' @examples
+#' #I create a GeneStructure Object
+#' gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+#'                              strand = "+", exon_id = 1)
+#'
+#' #I consider the class CodingGene, which inherited this method from its superclass Gene
+#' gene <- new("CodingGene", id = "gene1", symbol = "GENE1", name = "Gene 1",
+#'             description = "A test gene", struct = gen_struct)
+#' description(gene)
 setGeneric("description", function(x) standardGeneric("description"))
 #' @rdname description
 setMethod("description", "Gene", function(x) x@description)
@@ -55,22 +94,20 @@ setMethod("description", "Gene", function(x) x@description)
 #' @name struct
 #' @aliases struct
 #' @export
+#' @return A GeneStructure object representing the gene structure.
+#' @examples
+#' #I create a GeneStructure Object
+#' gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+#'                             strand = "+", exon_id = 1)
+#'
+#' #I consider the class RibosomalRNA, which inherited the method struct from its superclass Gene
+#' gene <- new("RibosomalRNA", id = "gene1", symbol = "GENE1",
+#'            name = "Gene 1", description = "A test gene", struct = gen_struct)
+#' struct(gene)
 setGeneric("struct", function(x) standardGeneric("struct"))
 #' @rdname struct
 setMethod("struct", "Gene", function(x) x@struct)
 
-# Define accessor functions for GeneStructure class
-
-#' Get the exon ID of a GeneStructure
-#'
-#' @param x A GeneStructure object.
-#' @return The exon ID of the gene structure.
-#' @name exon_id
-#' @aliases exon_id
-#' @export
-setGeneric("exon_id", function(x) standardGeneric("exon_id"))
-#' @rdname exon_id
-setMethod("exon_id", "GeneStructure", function(x) x@exon_id)
 
 #' Get the number of exons in a Gene
 #'
@@ -79,6 +116,14 @@ setMethod("exon_id", "GeneStructure", function(x) x@exon_id)
 #' @name numExons
 #' @aliases numExons
 #' @export
+#' @return An integer representing the number of exons.
+#' @examples
+#' #I create a GeneStructure Object
+#' gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+#'                            strand = "+", exon_id = 1)
+#' gene <- new("RibosomalRNA", id = "gene1", symbol = "GENE1", name = "Gene 1",
+#'            description = "A test gene", struct = gen_struct)
+#' numExons(gene)
 setGeneric("numExons", function(x) standardGeneric("numExons"))
 #' @rdname numExons
 setMethod("numExons", "Gene", function(x) length(unique(x@struct@ranges)))
@@ -90,6 +135,16 @@ setMethod("numExons", "Gene", function(x) length(unique(x@struct@ranges)))
 #' @name productSequence
 #' @aliases productSequence
 #' @export
+#' @return A character string representing the product sequence.
+#' @examples
+#' #I create a GeneStructure Object
+#' gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+#'                             strand = "+", exon_id = 1)
+#' coding_gene <- new("CodingGene", id = "gene1", symbol = "GENE1",
+#'                    name = "Gene 1", description = "A protein-coding gene",
+#'                    struct = gen_struct, proteinID = "P12345",
+#'                    proteinSequence = "MTEYKLVVVG")
+#' productSequence(coding_gene)
 setGeneric("productSequence", function(x) standardGeneric("productSequence"))
 
 #' @rdname productSequence
@@ -117,6 +172,16 @@ setMethod("productSequence", "PiwiInteractingRNA", function(x) x@piRNASequence)
 #' @name lengthProduct
 #' @aliases lengthProduct
 #' @export
+#' @return An integer representing the length of the product sequence.
+#' @examples
+#' #I create a GeneStructure Object
+#' gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+#'                             strand = "+", exon_id = 1)
+#' coding_gene <- new("CodingGene", id = "gene1", symbol = "GENE1",
+#'                      name = "Gene 1", description = "A protein-coding gene",
+#'                      struct = gen_struct, proteinID = "P12345",
+#'                      proteinSequence = "MTEYKLVVVG")
+#' lengthProduct(coding_gene)
 setGeneric("lengthProduct", function(x) standardGeneric("lengthProduct"))
 
 #' @rdname lengthProduct
