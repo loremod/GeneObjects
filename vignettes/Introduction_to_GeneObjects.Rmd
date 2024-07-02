@@ -1,0 +1,212 @@
+
+---
+title: "Introduction to GeneObjects"
+author: "Lorenzo Modica"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to GeneObjects}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+The `GeneObjects` package provides a set of S4 classes to represent various types of genes, including protein-coding genes, long non-coding RNA genes, microRNA genes, ribosomal RNA genes, small nuclear RNA genes, and piwi-interacting RNA genes. Below the different relationships between the package classes are shown.
+
+
+```{r echo=FALSE, warning=FALSE, fig.width=5, fig.height=5} 
+library(DiagrammeR)
+
+grViz("
+digraph gene_classes {
+  
+  # Graph attributes
+  graph [layout = dot, rankdir = BT]
+  
+  # Node attributes
+  node [shape = rectangle, style = filled, fillcolor = lightgrey, fontname = Helvetica, fontsize = 20]
+  
+  # Define nodes
+  Gene [label = 'Gene\n<<Virtual>>']
+  CodingGene [label = 'CodingGene\n<<Gene>>']
+  LncRNAGene [label = 'LncRNAGene\n<<Gene>>']
+  MicroRNAGene [label = 'MicroRNAGene\n<<Gene>>']
+  RibosomalRNA [label = 'RibosomalRNA\n<<Gene>>']
+  SmallNuclearRNA [label = 'SmallNuclearRNA\n<<Gene>>']
+  PiwiInteractingRNA [label = 'PiwiInteractingRNA\n<<Gene>>']
+  GeneStructure [label = 'GeneStructure\n<<GRanges>>']
+  
+  # Define edges
+  CodingGene -> Gene
+  LncRNAGene -> Gene
+  MicroRNAGene -> Gene
+  RibosomalRNA -> Gene
+  SmallNuclearRNA -> Gene
+  PiwiInteractingRNA -> Gene
+  Gene -> GeneStructure [style = dashed, label = '  has a', fontname = Helvetica, fontsize = 18, color = gray]
+  GeneStructure -> GRanges
+  
+  # Styling
+  GeneStructure [fillcolor = lightblue]
+}
+")
+```
+
+This vignette introduces the main features of the package and demonstrates how to use its functionalities. 
+Let's start by importing the GeneObjects package.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library(GeneObjects)
+```
+
+# Creating Gene Objects
+
+## Creating a CodingGene Object
+
+First, let's create a `CodingGene` object. A `CodingGene` represents a protein-coding gene and includes information such as the gene ID, symbol, name, description, structure, protein ID, and protein sequence.
+
+```{r}
+# Load necessary libraries
+library(GenomicRanges)
+
+# Create a GeneStructure object
+structure <- GeneStructure(seqnames = "chr13", start = c(32889611, 32973801, 32973845), end = c(32973800, 32973805, 32973869), strand = "-", exon_id = c("exon1", "exon2", "exon3"))
+
+# Create a CodingGene object
+coding_gene <- CodingGene(
+  id = "ENSG00000139618",
+  symbol = "BRCA2",
+  name = "BRCA2",
+  description = "Breast cancer type 2 susceptibility protein",
+  struct = structure,
+  proteinID = "P51587",
+  proteinSequence = "MENQWEK" #semplified, just for the example
+)
+
+# Display the CodingGene object
+coding_gene
+```
+
+## Creating a LncRNAGene Object
+
+Next, let's create a `LncRNAGene` object, which represents a long non-coding RNA gene.
+
+```{r}
+# Create a GeneStructure object
+structure <- GeneStructure(seqnames = "chr11", start = c(65270, 66700), end = c(66716, 66716), strand = "+", exon_id = c("exon1", "exon2"))
+
+# Create a LncRNAGene object
+lncRNA_gene <- LncRNAGene(
+  id = "ENSG00000273105",
+  symbol = "MALAT1",
+  name = "MALAT1",
+  description = "Metastasis Associated Lung Adenocarcinoma Transcript 1",
+  struct = structure,
+  lncRNAID = "NONHSAG000347",
+  RNASequence = "GATTACA"
+)
+
+# Display the LncRNAGene object
+lncRNA_gene
+```
+
+## Creating a MicroRNAGene Object
+
+Let's also create a `MicroRNAGene` object, which represents a microRNA gene.
+
+```{r}
+# Create a GeneStructure object
+structure <- GeneStructure(seqnames = "chr17", start = c(59109, 59350), end = c(59370, 59370), strand = "+", exon_id = c("exon1", "exon2"))
+
+# Create a MicroRNAGene object
+microRNA_gene <- MicroRNAGene(
+  id = "ENSG00000284458",
+  symbol = "MIR21",
+  name = "MicroRNA 21",
+  description = "microRNA 21",
+  struct = structure,
+  microRNAID = "MI0000077",
+  microRNASeedSequence = "UAGCUU"
+)
+
+# Display the MicroRNAGene object
+microRNA_gene
+```
+
+# Accessing Gene Information
+
+## Id, Name and Symbol
+
+You can obtain the gene ID, its name and its Symbol using the following accessors:
+
+```{r}
+#Get the ID
+id(microRNA_gene)
+#Get the name
+name(microRNA_gene)
+#Get the symbol
+symbol(microRNA_gene)
+```
+
+
+
+## Gene Structure
+
+You can access the structure of the gene using the `structure` accessor.
+
+```{r}
+# Get the structure of the CodingGene
+struct(coding_gene)
+```
+
+
+## Number of Exons
+
+You can get the number of exons in the gene using the `numExons` accessor.
+
+```{r}
+# Get the number of exons in the LncRNAGene
+numExons(lncRNA_gene)
+
+# Get the number of exons in the CodingGene
+numExons(coding_gene)
+```
+
+## Product Sequence
+
+You can get the product sequence of the gene using the `productSequence` accessor.
+
+```{r}
+# Get the product sequence of the MicroRNAGene
+productSequence(microRNA_gene)
+
+# Get the product sequence of the CodingGene
+productSequence(coding_gene)
+```
+
+Note that, depending on the type of gene, the product type will be different
+
+## Length of Product
+
+You can get the length of the product of the gene using the `lengthProduct` accessor.
+
+```{r}
+# Get the length of the product of the CodingGene
+lengthProduct(coding_gene)
+```
+
+# Conclusion
+
+This vignette has introduced the basic functionalities of the `GeneObjects` package, demonstrating how to create different types of gene objects and access their information. For more details, please refer to the package documentation.
+
+
+Made by Lorenzo Modica, *Scientific Programming Project*
+
