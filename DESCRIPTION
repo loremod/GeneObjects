@@ -3,7 +3,7 @@ Title: Specific Gene Representation Package
 Version: 1.0.0
 Authors@R: 
     person("Lorenzo", "Modica", , "lorenzomod@hotmail.it", role = c("aut", "cre"))
-Description: The GeneObjects package provides a comprehensive set of S4 classes to represent various types of genes, including protein-coding genes, long non-coding RNA genes, microRNA genes, ribosomal RNA genes, small nuclear RNA genes, and piwi-interacting RNA genes. This package enables researchers to create, manipulate, and analyze gene objects with detailed information about their structure and function. GeneObjects is designed to facilitate bioinformatics workflows by offering easy-to-use constructor and accessor function.
+Description: The GeneObjects package provides a comprehensive set of S4 classes to represent various types of genes, including protein-coding genes, long non-coding RNA genes, microRNA genes, ribosomal RNA genes, small nuclear RNA genes, and piwi-interacting RNA genes. This package enables researchers to create, manipulate, and analyze gene objects with detailed information about their structure and function. GeneObjects is designed to facilitate bioinformatics workflows by offering easy-to-use constructor and accessor functions.
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -13,7 +13,8 @@ Imports:
     methods,
     GenomicRanges,
     S4Vectors,
-    IRanges
+    IRanges,
+    Biostrings
 Suggests: 
     knitr,
     rmarkdown,

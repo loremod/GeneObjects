@@ -16,17 +16,19 @@ A class to represent small nuclear RNA genes.
 \describe{
 \item{\code{snRNAID}}{A character string representing the snRNA ID.}
 
-\item{\code{snRNASequence}}{A character string representing the snRNA sequence.}
+\item{\code{snRNASequence}}{A RNAString representing the snRNA sequence.}
 }}
 
 \examples{
-gen_struct <- GeneStructure(seqnames = "chr1", start = c(100,250),
-              end = c(200,300), strand = "+", exon_id = 1:2)
-snrna_gene <- new("SmallNuclearRNA", id = "gene5", symbol = "SNR1",
-              name = "Small Nuclear RNA 1",
-              description = "A small nuclear RNA gene",
-              struct = gen_struct, snRNAID = "SNR123",
-              snRNASequence = "GCUAGCU")
+library(GenomicRanges)
+library(Biostrings)
+gen_struct <- GeneStructure(seqnames = "chr1", start = c(100, 250),
+                            end = c(200, 300), strand = "+", exon_id = 1:2)
+snrna_gene <- SmallNuclearRNA(id = "gene5", symbol = "SNR1",
+                  name = "Small Nuclear RNA 1",
+                  description = "A small nuclear RNA gene",
+                  struct = gen_struct, snRNAID = "SNR123",
+                  snRNASequence = "GCUAGCU")
 snrna_gene
 }
 \seealso{

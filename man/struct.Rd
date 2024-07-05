@@ -21,12 +21,12 @@ A GeneStructure object representing the gene structure.
 Get the structure of a Gene
 }
 \examples{
-#I create a GeneStructure Object
+library(GenomicRanges)
 gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
                             strand = "+", exon_id = 1)
-
-#I consider the class RibosomalRNA, which inherited the method struct from its superclass Gene
-gene <- new("RibosomalRNA", id = "gene1", symbol = "GENE1",
-           name = "Gene 1", description = "A test gene", struct = gen_struct)
+gene <- RibosomalRNA(id = "gene1", symbol = "GENE1",
+                     name = "Gene 1", description = "A test gene",
+                     struct = gen_struct, rRNAID = "RIB1",
+                     rRNASequence = "AGGCUAG")
 struct(gene)
 }

@@ -21,11 +21,11 @@ A character string representing the gene name.
 Get the name of a Gene
 }
 \examples{
-#I create a GeneStructure Object
-gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500, strand = "+", exon_id = 1)
-
-#I consider the class MicroRNAGene, which inherited this method from its superclass Gene
-gene <- new("MicroRNAGene", id = "gene1", symbol = "GENE1", name = "Gene 1",
-           description = "A test gene", struct = gen_struct)
+library(GenomicRanges)
+gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
+                            strand = "+", exon_id = 1)
+gene <- MicroRNAGene(id = "gene1", symbol = "GENE1", name = "Gene 1",
+                     description = "A test gene", struct = gen_struct,
+                     microRNAID = "MIR1", microRNASeedSequence = "UAGCUU")
 name(gene)
 }

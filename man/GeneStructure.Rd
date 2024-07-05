@@ -24,8 +24,9 @@ A GeneStructure object.
 Create a GeneStructure Object
 }
 \examples{
+library(GenomicRanges)
 gene_structure <- GeneStructure(seqnames = "chr1", start = c(100, 230),
-                                end = c(200,240), strand = "+",
+                                end = c(200, 240), strand = "+",
                                 exon_id = 1:2)
 gene_structure
 }

@@ -21,10 +21,11 @@ An integer representing the number of exons.
 Get the number of exons in a Gene
 }
 \examples{
-#I create a GeneStructure Object
+library(GenomicRanges)
 gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
-                           strand = "+", exon_id = 1)
-gene <- new("RibosomalRNA", id = "gene1", symbol = "GENE1", name = "Gene 1",
-           description = "A test gene", struct = gen_struct)
+                            strand = "+", exon_id = 1)
+gene <- RibosomalRNA(id = "gene1", symbol = "GENE1", name = "Gene 1",
+                     description = "A test gene", struct = gen_struct,
+                     rRNAID = "RIB1", rRNASequence = "AGGCUAG")
 numExons(gene)
 }

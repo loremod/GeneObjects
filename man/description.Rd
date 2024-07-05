@@ -21,12 +21,11 @@ A character string describing the gene.
 Get the description of a Gene
 }
 \examples{
-#I create a GeneStructure Object
+library(GenomicRanges)
 gen_struct <- GeneStructure(seqnames = "chr1", start = 100, end = 500,
-                             strand = "+", exon_id = 1)
-
-#I consider the class CodingGene, which inherited this method from its superclass Gene
-gene <- new("CodingGene", id = "gene1", symbol = "GENE1", name = "Gene 1",
-            description = "A test gene", struct = gen_struct)
+                            strand = "+", exon_id = 1)
+gene <- CodingGene(id = "gene1", symbol = "GENE1", name = "Gene 1",
+                   description = "A test gene", struct = gen_struct,
+                   proteinID = "P12345", proteinSequence = "MTEYKLVVVG")
 description(gene)
 }

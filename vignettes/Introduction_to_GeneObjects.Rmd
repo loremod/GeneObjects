@@ -65,6 +65,7 @@ knitr::opts_chunk$set(
 
 ```{r}
 library(GeneObjects)
+library(Biostrings)
 ```
 
 # Creating Gene Objects
@@ -88,12 +89,14 @@ coding_gene <- CodingGene(
   description = "Breast cancer type 2 susceptibility protein",
   struct = structure,
   proteinID = "P51587",
-  proteinSequence = "MENQWEK" #semplified, just for the example
+  proteinSequence = AAString("MENQWEK") # simplified, just for the example
 )
 
 # Display the CodingGene object
 coding_gene
 ```
+I defined the class GeneStructure, which contains GRanges, to impose a stricter logic over the GenomicRanges class. Since we have to represent exons of the same gene, which are positioned on the same chromosome and strand, I wanted to enforce specific controls on the input passed as an argument. GRanges accepts regions from different strands and chromosomes, but in this context, it is essential that all exons belong to the same chromosome and strand. Therefore, the GeneStructure constructor checks if the strand and chromosome of each exon are consistent, throwing an error otherwise.
+
 
 ## Creating a LncRNAGene Object
 
@@ -111,7 +114,7 @@ lncRNA_gene <- LncRNAGene(
   description = "Metastasis Associated Lung Adenocarcinoma Transcript 1",
   struct = structure,
   lncRNAID = "NONHSAG000347",
-  RNASequence = "GATTACA"
+  RNASequence = RNAString("GAUUACA")
 )
 
 # Display the LncRNAGene object
@@ -120,7 +123,8 @@ lncRNA_gene
 
 ## Creating a MicroRNAGene Object
 
-Let's also create a `MicroRNAGene` object, which represents a microRNA gene.
+Let's also create a `MicroRNAGene` object, which represents a microRNA gene. 
+The RNAString object, or the AAString as in the case of the amino acid sequence of CodingGene, can be also created internally by the constructor function itself, giving the possibility for the user to specify just the character string of the sequence as an argument (example below).
 
 ```{r}
 # Create a GeneStructure object
@@ -140,6 +144,13 @@ microRNA_gene <- MicroRNAGene(
 # Display the MicroRNAGene object
 microRNA_gene
 ```
+
+As we can see the type of the sequence is RNAString
+
+```{r}
+is(productSequence(microRNA_gene))
+```
+
 
 # Accessing Gene Information
 
@@ -190,6 +201,12 @@ productSequence(microRNA_gene)
 
 # Get the product sequence of the CodingGene
 productSequence(coding_gene)
+
+# Checking that the productSequence of a CodingGene is an AAString
+inherits(productSequence(coding_gene), "AAString")
+
+# Whilte it is an RNAString for MicroRNAGene
+inherits(productSequence(microRNA_gene), "RNAString")
 ```
 
 Note that, depending on the type of gene, the product type will be different
